@@ -1,0 +1,27 @@
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      force: true
+    session:
+      cookie:
+        same-site: strict
+  forward-headers-strategy: framework
+  reactive:
+    session:
+      timeout: 3h
+
+project:
+  name: api-gateway
+  version: 1.0.0_SNAPSHOT
+  package: cc.rits.membership.console.api_gateway
+
+logging:
+  level:
+    root: INFO
