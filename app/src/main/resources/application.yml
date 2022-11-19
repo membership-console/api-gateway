@@ -2,6 +2,8 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+  main:
+    web-application-type: reactive
 
 server:
   port: 8080
@@ -13,9 +15,6 @@ server:
       cookie:
         same-site: strict
   forward-headers-strategy: framework
-  reactive:
-    session:
-      timeout: 3h
 
 project:
   name: api-gateway

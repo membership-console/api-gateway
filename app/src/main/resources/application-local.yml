@@ -1,3 +1,22 @@
-logging:
-  level:
-    root: INFO
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: IAM
+          uri: http://localhost:8081
+          predicates:
+            - Path=/iam/api/**, /iam/swagger-ui/**, /iam/v3/**
+          filters:
+            - RewritePath=/iam/(?<segment>.*), /$\{segment}
+        - id: paymaster
+          uri: http://localhost:8082
+          predicates:
+            - Path=/paymaster/api/**
+          filters:
+            - RewritePath=/paymaster/(?<segment>.*), /$\{segment}
+        - id: UI
+          uri: http://localhost:8000
+          predicates:
+            - Path=/**
+          filters:
+            - RewritePath=/(?<segment>.*), /$\{segment}

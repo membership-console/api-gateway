@@ -65,6 +65,9 @@ dependencies {
     testImplementation "org.springframework.boot:spring-boot-starter-test:${SPRING_BOOT_VERSION}"
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor:${SPRING_BOOT_VERSION}"
 
+    // spring cloud
+    implementation "org.springframework.cloud:spring-cloud-starter-gateway:3.1.4"
+
     // lombok
     implementation "org.projectlombok:lombok:1.18.24"
     annotationProcessor "org.projectlombok:lombok:1.18.24"
