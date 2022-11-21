@@ -1,0 +1,4 @@
+product-urls:
+  ui: UI_URL
+  iam: IAM_URL
+  paymaster: PAYMASTER_URL

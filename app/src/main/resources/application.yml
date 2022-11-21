@@ -4,6 +4,26 @@ spring:
       matching-strategy: ant_path_matcher
   main:
     web-application-type: reactive
+  cloud:
+    gateway:
+      routes:
+        - id: IAM
+          uri: ${product-urls.iam}
+          predicates:
+            - Path=/iam/api/**, /iam/swagger-ui/**, /iam/v3/**
+          filters:
+            - StripPrefix=1
+        - id: paymaster
+          uri: ${product-urls.paymaster}
+          predicates:
+            - Path=/paymaster/api/**
+          filters:
+            - StripPrefix=1
+            - IamAuthenticationFilter
+        - id: UI
+          uri: ${product-urls.ui}
+          predicates:
+            - Path=/**
 
 server:
   port: 8080

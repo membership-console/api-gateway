@@ -1,4 +1,4 @@
-package cc.rits.membership.console.api_gateway;
+package cc.rits.membership.console.api_gateway.filter;
 
 import java.util.stream.Collectors;
 
