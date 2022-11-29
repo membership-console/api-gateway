@@ -1,7 +1,8 @@
 # API Gateway
 
 ![CI](https://github.com/membership-console/api-gateway/workflows/CI/badge.svg)
-![version](https://img.shields.io/badge/version-1.0.0__SNAPSHOT-blue.svg)
+![Build](https://github.com/membership-console/api-gateway/workflows/Build/badge.svg)
+![version](https://img.shields.io/badge/version-1.0.0--SNAPSHOT-blue.svg)
 
 ## 概要
 
