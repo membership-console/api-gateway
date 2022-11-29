@@ -22,10 +22,6 @@ jobs:
           java-version: 11
           cache: gradle
 
-      - name: build
-        run: |
-          ./gradlew bootJar
-
       - name: test
         run: |
           ./gradlew test

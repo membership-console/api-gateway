@@ -1,4 +1,0 @@
-product-urls:
-  ui: http://localhost:8000
-  iam: http://localhost:8081
-  paymaster: http://localhost:8082

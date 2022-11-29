@@ -8,20 +8,27 @@ spring:
     gateway:
       routes:
         - id: IAM
-          uri: ${product-urls.iam}
+          uri: ${IAM_URL:http://localhost:8080}
           predicates:
             - Path=/iam/api/**, /iam/swagger-ui/**, /iam/v3/**
           filters:
             - StripPrefix=1
         - id: paymaster
-          uri: ${product-urls.paymaster}
+          uri: ${PAYMASTER_URL:http://localhost:8080}
           predicates:
             - Path=/paymaster/api/**
           filters:
             - StripPrefix=1
             - IamAuthenticationFilter
+        - id: reminder
+          uri: ${REMINDER_URL:http://localhost:8080}
+          predicates:
+            - Path=/reminder/api/**
+          filters:
+            - StripPrefix=1
+            - IamAuthenticationFilter
         - id: UI
-          uri: ${product-urls.ui}
+          uri: ${MEMBERSHIP_CONSOLE_URL:http://localhost:80}
           predicates:
             - Path=/**
 
@@ -38,7 +45,7 @@ server:
 
 project:
   name: api-gateway
-  version: 1.0.0_SNAPSHOT
+  version: 1.0.0-SNAPSHOT
   package: cc.rits.membership.console.api_gateway
 
 logging:
