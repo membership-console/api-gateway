@@ -18,8 +18,6 @@ import lombok.RequiredArgsConstructor;
 
 /**
  * IAM Client
- * 
- * TODO: WebClientに移行
  */
 @RequiredArgsConstructor
 @Component
