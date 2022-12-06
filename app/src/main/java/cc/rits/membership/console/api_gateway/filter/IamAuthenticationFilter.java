@@ -1,8 +1,8 @@
 package cc.rits.membership.console.api_gateway.filter;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
-import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.core.JsonParser;
@@ -33,13 +33,13 @@ public class IamAuthenticationFilter extends AbstractGatewayFilterFactory<IamAut
             final var cookies = exchange.getRequest().getCookies();
             final var loginUser = this.iamClient.getLoginUser(cookies);
 
-            // Authorizationヘッダにログインユーザ情報を入れる
+            // X-Membership-Console-Userヘッダにログインユーザ情報を入れる
             final var httpRequestBuilder = exchange.getRequest().mutate();
             if (loginUser.isPresent()) {
                 try {
                     httpRequestBuilder.header( //
-                        HttpHeaders.AUTHORIZATION, //
-                        String.format("User %s", this.objectMapper.writeValueAsString(loginUser)) //
+                        "X-Membership-Console-User",
+                        new String(Base64.encodeBase64(this.objectMapper.writeValueAsString(loginUser).getBytes(), true)) //
                     );
                 } catch (final JsonProcessingException ignored) {
                 }
